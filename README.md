@@ -134,7 +134,7 @@
         <div class="envelope"></div>
     </div>
 
-    <p class="instruction" id="hint">จิ้มที่ซองจดหมายนะ ❤️</p>
+    <p class="instruction" id="hint">click me! ❤️</p>
 
     <script>
         const wrapper = document.getElementById('wrapper');
