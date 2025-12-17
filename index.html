@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-pink: #ffb7c5;    /* ชมพูอ่อนหลัก */
+            --dark-pink: #f08080;       /* ชมพูเข้ม/Coral */
+            --bg-color: #fff5f7;        /* พื้นหลังชมพูจางๆ */
+            --card-white: #ffffff;      /* สีการ์ดขาวสะอาด */
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            margin: 0;
+            flex-direction: column;
+            overflow: hidden; /* ป้องกัน scrollbar ตอนหัวใจลอย */
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            z-index: 10;
+        }
+
+        /* ตัวซองจดหมาย */
+        .envelope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-pink);
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 183, 197, 0.4);
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        /* ส่วนประกอบซอง (Flaps) */
+        .flap {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            z-index: 3;
+        }
+
+        .bottom-flap {
+            border-width: 110px 160px 0 160px;
+            border-color: #f7a8b8 transparent transparent transparent;
+            bottom: 0;
+        }
+
+        .left-flap {
+            border-width: 110px 0 110px 160px;
+            border-color: transparent transparent transparent var(--primary-pink);
+            left: 0;
+        }
+
+        .right-flap {
+            border-width: 110px 160px 110px 0;
+            border-color: transparent var(--primary-pink) transparent transparent;
+            right: 0;
+        }
+
+        /* ฝาบน (สีขาวตัดชมพู) */
+        .top-flap {
+            border-width: 110px 160px 0 160px;
+            border-color: #ffdae0 transparent transparent transparent;
+            top: 0;
+            transform-origin: top center;
+            transition: transform 0.6s ease;
+            z-index: 5;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.05));
+        }
+
+        /* การ์ดข้อความ */
+        .card {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            right: 10px;
+            height: 180%;
+            background-color: var(--card-white);
+            border-radius: 8px;
+            z-index: 1;
+            box-sizing: border-box;
+            padding: 30px 20px;
+            transform: translateY(100%);
+            transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .text-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+        }
+
+        .text-body {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+            text-align: center;
+        }
+
+        .text-footer {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--primary-pink);
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* แอนิเมชันเปิดซอง */
+        .envelope.open .top-flap {
+            transform: rotateX(160deg);
+            z-index: 1;
+        }
+
+        .envelope.open .card {
+            transform: translateY(-80%);
+        }
+
+        .instruction {
+            margin-top: 30px;
+            color: var(--dark-pink);
+            font-weight: bold;
+            transition: opacity 0.5s;
+        }
+
+        /* ระบบหัวใจลอย */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            color: var(--dark-pink);
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+            animation: float Up 4s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="envelope-wrapper">
+        <div class="envelope" id="envelope">
+            <div class="card">
+                <span class="text-header">Happy 2nd Month</span>
+                <span class="text-body">
+                    สวัสดีอ้วน วันนี้ครบสองเดือนอีกแล้วไวมากเลยอ้วนว่ามั้ย เดือนนี้ทั้งเบบี้แล้วก็เค้าเราสองคนโตขึ้นกันทั้งคู่เลย ต่างคนต่างมีหน้าที่เป็นของตัวเองแล้วเบบี้คนเก่งของเค้าก็ทำมันได้ดีมาก อยากบอกเบบี้ว่าอยากให้เบบี้ยิ้มหวานแฮปปี้ทุกวัน ช่วงนี้เบบี้ทำงานเหนื่อยทุกวันเลย อยากให้เธอพักผ่อนเยอะเยอะ ไม่ว่าอะไรจะใจร้ายกับเธอจะมีเค้าอยู่ตรงนี้ตลอด เค้ารอกอดเธอตรงนี้เสมอเลย เค้ารักเบบี้มากมากเลย สุขสันต์วันครบรอบสองเดือนค่ะ
+                </span>
+                <span class="text-footer">love u baby.</span>
+            </div>
+            
+            <div class="flap top-flap"></div>
+            <div class="flap left-flap"></div>
+            <div class="flap right-flap"></div>
+            <div class="flap bottom-flap"></div>
+        </div>
+    </div>
+
+    <p class="instruction" id="instruction">แตะที่ซองจดหมายเพื่อเปิด 💌</p>
+
+    <script>
+        const envelope = document.getElementById('envelope');
+        const instruction = document.getElementById('instruction');
+        let isOpen = false;
+
+        envelope.addEventListener('click', () => {
+            if (!isOpen) {
+                envelope.classList.add('open');
+                instruction.style.opacity = '0';
+                isOpen = true;
+                
+                // เริ่มปล่อยหัวใจ
+                setInterval(createHeart, 300);
+            }
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's'; // สุ่มความเร็ว 3-5 วินาที
+            heart.style.opacity = Math.random();
+            heart.style.fontSize = (Math.random() * 10 + 15) + 'px'; // สุ่มขนาดหัวใจ
+            
+            document.body.appendChild(heart);
+
+            // ลบหัวใจทิ้งเมื่อจบแอนิเมชันเพื่อไม่ให้เครื่องค้าง
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
